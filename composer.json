@@ -1,0 +1,17 @@
+{
+    "name": "yunqi/helper",
+    "description": "工具类",
+    "authors": [{
+        "name": "Destiny",
+        "email": "864328615@qq.com"
+    }],
+    "require": {
+        "php": ">=5.4"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "yunqi\\helper": "src/"
+        }
+    }
+}
