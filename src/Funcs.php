@@ -47,7 +47,7 @@ class Funcs
      * @return void
      * @author destiny
      */
-    public static function KsortParams($data)
+    public static function ksortParams($data)
     {
         ksort($data);
         $buff = '';

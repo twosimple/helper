@@ -18,7 +18,7 @@ class RSA
      * @return void
      * @author destiny
      */
-    public static function Encrypt($data,$key,$type)
+    public static function encrypt($data,$key,$type)
     {
         $key     = Funcs::getKey($key,$type);
         $str     = json_encode($data);
@@ -45,7 +45,7 @@ class RSA
      * @return void
      * @author destiny
      */
-    public static function Decrypt($str,$key,$type)
+    public static function decrypt($str,$key,$type)
     {
         $key     = Funcs::getKey($key,$type);
         $decrypt = '';
@@ -59,6 +59,7 @@ class RSA
             $decrypt .= $decryptData;
         }
         openssl_free_key($key);
+        return $decrypt?json_decode($decrypt,true):false;
         return $decrypt;
     }
 
@@ -70,10 +71,10 @@ class RSA
      * @return void
      * @author destiny
      */
-    public static function Sign($key,$data)
+    public static function sign($key,$data)
     {
         $key  = Funcs::getKey($key);
-        $buff = Funcs::KsortParams($data);
+        $buff = Funcs::ksortParams($data);
         openssl_sign($buff, $sign,$key);
         openssl_free_key($key);
         return $sign;
@@ -87,9 +88,9 @@ class RSA
      * @return void
      * @author destiny
      */
-    public static function CheckSign($data,$sign,$key)
+    public static function checkSign($data,$sign,$key)
     {
-        $signStr = Funcs::KsortParams($data);
+        $signStr = Funcs::ksortParams($data);
         $key     = openssl_pkey_get_public($key);
         $result  = openssl_verify($signStr, $sign,$key);
         openssl_free_key($key);
