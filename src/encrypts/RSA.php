@@ -1,6 +1,6 @@
 
 <?php
-namespace yunqi\helper\encryption;
+namespace yunqi\helper\encrypts;
 
 use yunqi\helper\Funcs;
 
