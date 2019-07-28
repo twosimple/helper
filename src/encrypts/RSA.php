@@ -1,4 +1,3 @@
-
 <?php
 namespace yunqi\helper\encrypts;
 
