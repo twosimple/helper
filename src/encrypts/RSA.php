@@ -63,6 +63,14 @@ class RSA
         return $decrypt;
     }
 
+    /**
+     * 对数数据签名
+     *
+     * @param [type] $key
+     * @param [type] $data
+     * @return void
+     * @author destiny
+     */
     public static function Sign($key,$data)
     {
         $key  = Funcs::getKey($key);
