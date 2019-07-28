@@ -78,4 +78,21 @@ class RSA
         openssl_free_key($key);
         return $sign;
     }
+
+    /**
+     * 验证签名
+     * @param [type] $data
+     * @param [type] $sign
+     * @param [type] $key
+     * @return void
+     * @author destiny
+     */
+    public static function CheckSign($data,$sign,$key)
+    {
+        $signStr = Funcs::KsortParams($data);
+        $key     = openssl_pkey_get_public($key);
+        $result  = openssl_verify($signStr, $sign,$key);
+        openssl_free_key($key);
+        return $result === 1 ? true : false;
+    }
 }
