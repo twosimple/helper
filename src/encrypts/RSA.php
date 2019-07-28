@@ -49,7 +49,7 @@ class RSA
     {
         $key     = Funcs::getKey($key,$type);
         $decrypt = '';
-        foreach (str_split($str, 117) as $chunk)
+        foreach (str_split($str, 128) as $chunk)
         {
             if($type){
                 openssl_public_decrypt($chunk,$decryptData,$key);
