@@ -15,7 +15,14 @@ class Funcs
      */
     public static function post($url,$params)
     {
-        $ch = curl_init($url);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        // 不需要页面内容
+        curl_setopt($ch, CURLOPT_NOBODY, 1);
+        // 不直接输出
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        // 返回最后的Location
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
         //开启发送post请求选项
         curl_setopt($ch,CURLOPT_POST,true);
@@ -24,7 +31,7 @@ class Funcs
         $result = curl_exec($ch);
         //4.返回返回值，关闭连接
         curl_close($ch);
-        return $result;
+        return json_decode($result,true);
     }
 
     /**
